@@ -2,8 +2,9 @@ const form = document.getElementById("convertForm");
 const numberInput = document.getElementById("number");
 const convertBtn = document.getElementById("convert-btn");
 const output = document.getElementById("output");
+const outputCon = document.querySelector(".output-container");
 
-convertBtn.addEventListener("click", checkUserInput());
+convertBtn.addEventListener("click", checkUserInput);
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -13,16 +14,17 @@ function checkUserInput() {
     let userInput = numberInput.value;
     if (userInput == ""){
         alert("Please enter a valid number.");
-    } else if (userInput < 0) {
+    } else if (userInput <= 1) {
         alert("Please enter a number greater than or equal to 1.");
     } else if (userInput >= 4000) {
         alert("Please enter a number less than or equal to 3999.");
     } else {
-        convertToRomanNumeral();
+        const result = convertToRomanNumeral(userInput);
+        outputCon.style.display = "block";
     }   
 }
 
-function convertToRomanNumeral(userInput) {
+function convertToRomanNumeral(numberInput) {
     const romanNumerals = {
         M: 1000, 
         CM: 900, 
@@ -36,17 +38,18 @@ function convertToRomanNumeral(userInput) {
         IX: 9, 
         V: 5, 
         IV: 4, 
-        I: 1,
+        I: 1
     };
 
-    let result = "";
+    let result = '';
 
-    for (const key in romanNumerals) {
-        while (userInput >= romanNumerals[key]) {
+    for (let key in romanNumerals) {
+        while (numberInput >= romanNumerals[key]) {
             result +=key;
-            userInput -= romanNumerals[key];
+            numberInput -= romanNumerals[key];   
         }
     }
-
-    console.log(result);
+    return result;
 }
+
+

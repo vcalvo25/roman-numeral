@@ -4,16 +4,24 @@
         <link rel="stylesheet" href="styles.css">
         <meta charset="UTF-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
         <title>Roman Numeral Converter</title>
     </head>
     <body>
         <main>
             <div class="container">
                 <h1>Roman Numeral Converter</h1>
-                <form id="convertForm">
-                    <input id="number">Enter a Number:</input>
+                <div class="line"></div>
+                <form id="convertForm" class="converter">
+                    <p>Enter a Number</p>
+                    <input id="number"></input>
                     <button id="convert-btn" type="submit" onclick="checkUserInput()">Convert</button>
-                <div id="output"></div>
+                    <p>Converted to Roman Numeral</p>
+                    <div id="output" class="output-container">THIS IS WHERE OUTPUT GOES</div>
+                
                 </form>
             </div>
         </main>
