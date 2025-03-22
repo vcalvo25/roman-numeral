@@ -2,7 +2,7 @@ const form = document.getElementById("convertForm");
 const numberInput = document.getElementById("number");
 const convertBtn = document.getElementById("convert-btn");
 const output = document.getElementById("output");
-const outputCon = document.querySelector(".output-container");
+const hideCon = document.querySelector(".hide");
 
 convertBtn.addEventListener("click", checkUserInput);
 
@@ -13,14 +13,22 @@ form.addEventListener("submit", (e) => {
 function checkUserInput() {
     let userInput = numberInput.value;
     if (userInput == ""){
-        alert("Please enter a valid number.");
+        output.innerHTML = `Please enter a valid number.`;
+        output.className = "alert";
+        hideCon.style.display = "block";
     } else if (userInput <= 1) {
-        alert("Please enter a number greater than or equal to 1.");
+        output.innerHTML = "Please enter a number greater than or equal to 1.";
+        output.className = "alert";
+        hideCon.style.display = "block";
     } else if (userInput >= 4000) {
-        alert("Please enter a number less than or equal to 3999.");
+        output.innerHTML = "Please enter a number less than or equal to 3999.";
+        output.className = "alert";
+        hideCon.style.display = "block";
     } else {
         const result = convertToRomanNumeral(userInput);
-        outputCon.style.display = "block";
+        hideCon.style.display = "block";
+        output.innerHTML = result;
+        output.className = "output-container";
     }   
 }
 
